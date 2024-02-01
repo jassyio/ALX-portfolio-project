@@ -1,0 +1,120 @@
+/* Reset CSS for margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body style */
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+/* Header styles */
+header {
+  background: #f8f8f8;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header > div[blank] {
+  height: 50px; /* Adjust the height as needed */
+  /* Add animation styles for the ball rolling if needed */
+}
+
+header > div[mainheading] {
+  display: flex;
+  align-items: center;
+}
+
+header > div[mainheading] > div[website-name] {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+header > div[mainheading] > div[searchbar] {
+  margin-left: auto;
+}
+
+/* Menu styles */
+nav {
+  background: #f8f8f8;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+nav > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav > div > div {
+  margin: 0 10px;
+}
+
+nav > div > div[leagues] {
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+nav > div > div[leagues]:hover {
+  border-color: #e53e3e; /* Red color on hover */
+}
+
+nav > div > div[scores],
+nav > div > div[fixtures],
+nav > div > div[transfers],
+nav > div > div[topscorer],
+nav > div > div[news],
+nav > div > div[home] {
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+nav > div > div[scores]:hover {
+  border-color: #48bb78; /* Green color on hover */
+}
+
+nav > div > div[fixtures]:hover {
+  border-color: #4299e1; /* Blue color on hover */
+}
+
+nav > div > div[transfers]:hover {
+  border-color: #fbd38d; /* Yellow color on hover */
+}
+
+nav > div > div[topscorer]:hover {
+  border-color: #9f7aea; /* Purple color on hover */
+}
+
+nav > div > div[news]:hover {
+  border-color: #ed64a6; /* Pink color on hover */
+}
+
+nav > div > div[home]:hover {
+  border-color: #1a202c; /* Dark color on hover */
+}
+
+/* Advertisement styles */
+.advertisement {
+  padding: 20px;
+  background: #f7fafc;
+}
+
+/* Main content styles */
+.maincontent {
+  padding: 20px;
+}
+
+/* Footer styles */
+footer {
+  background: #805ad5;
+  padding: 20px;
+  color: #ffffff;
+  text-align: center;
+}
