@@ -1,36 +1,31 @@
-// table.js
-import React, { useEffect, useState } from 'react';
+// Import necessary dependencies
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function Table() {
-  const [standings, setStandings] = useState([]);
+const Table = ({ selectedLeague, selectedTeam }) => {
+  const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
-    const fetchStandings = async () => {
+    const fetchTableData = async () => {
       try {
-        const response = await axios.get('YOUR_STANDINGS_API_ENDPOINT'); // Replace with your API endpoint
-
-        // Assuming standings data is available in response.data.data
-        setStandings(response.data.data);
+        const response = await axios.get(`YOUR_BACKEND_URL/api/table?league=${selectedLeague}&team=${selectedTeam}`);
+        setTableData(response.data);
       } catch (error) {
-        console.error('Error fetching standings:', error);
+        console.error('Error fetching table data:', error);
       }
     };
 
-    fetchStandings();
-  }, []); // Empty dependency array ensures useEffect runs only once
+    fetchTableData();
+  }, [selectedLeague, selectedTeam]);
 
   return (
     <div>
-      {/* Display standings using the state variable 'standings' */}
-      {standings.map((team) => (
-        <div key={team.team_id}>
-          {/* Render team information as needed */}
-          {team.rank}. {team.team_name} - Points: {team.points}
-        </div>
+      {/* Render tableData in your component */}
+      {tableData.map((tableEntry) => (
+        <div key={tableEntry.id}>{/* Render individual table entry data here */}</div>
       ))}
     </div>
   );
-}
+};
 
 export default Table;

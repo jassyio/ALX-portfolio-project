@@ -1,120 +1,98 @@
-/* Reset CSS for margin and padding */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Body style */
-body {
-  font-family: 'Arial', sans-serif;
-}
-
-/* Header styles */
-header {
-  background: #f8f8f8;
-  padding: 20px;
+/* Add styling for the header */
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-header > div[blank] {
-  height: 50px; /* Adjust the height as needed */
-  /* Add animation styles for the ball rolling if needed */
+.line-break {
+  
+  width: 2px;
+  background-color: green;
 }
 
-header > div[mainheading] {
+
+/* Styling for website name and searchbar */
+.main-heading {
   display: flex;
-  align-items: center;
+  
 }
 
-header > div[mainheading] > div[website-name] {
-  font-size: 2rem;
-  font-weight: bold;
+.website-name {
+  font-size: 2.5rem;
+  text-align: left;
+  text-decoration:dashed;
+
 }
 
-header > div[mainheading] > div[searchbar] {
+.searchbar {
   margin-left: auto;
+  padding: 5px;
+  color: #c2e71d;
 }
 
-/* Menu styles */
-nav {
-  background: #f8f8f8;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-}
-
-nav > div {
+/* Styling for menu */
+.menu {
   display: flex;
+  justify-content: space-around;
+  background-color: #444;
+  color: white;
+  padding: 10px;
+}
+
+/* Styling for menu items */
+.menu-item {
+  text-decoration: none;
+  color: white;
+  padding: 5px 10px;
+  transition: background-color 0.3s;
+}
+
+.menu-item:hover {
+  background-color: aqua;
+}
+
+/* Styling for other components as needed */
+
+/* Styling for the body */
+.body {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  padding: 20px;
 }
 
-nav > div > div {
-  margin: 0 10px;
-}
-
-nav > div > div[leagues] {
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: border-color 0.3s ease;
-}
-
-nav > div > div[leagues]:hover {
-  border-color: #e53e3e; /* Red color on hover */
-}
-
-nav > div > div[scores],
-nav > div > div[fixtures],
-nav > div > div[transfers],
-nav > div > div[topscorer],
-nav > div > div[news],
-nav > div > div[home] {
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: border-color 0.3s ease;
-}
-
-nav > div > div[scores]:hover {
-  border-color: #48bb78; /* Green color on hover */
-}
-
-nav > div > div[fixtures]:hover {
-  border-color: #4299e1; /* Blue color on hover */
-}
-
-nav > div > div[transfers]:hover {
-  border-color: #fbd38d; /* Yellow color on hover */
-}
-
-nav > div > div[topscorer]:hover {
-  border-color: #9f7aea; /* Purple color on hover */
-}
-
-nav > div > div[news]:hover {
-  border-color: #ed64a6; /* Pink color on hover */
-}
-
-nav > div > div[home]:hover {
-  border-color: #1a202c; /* Dark color on hover */
-}
-
-/* Advertisement styles */
+/* Styling for the advertisement */
 .advertisement {
-  padding: 20px;
-  background: #f7fafc;
+  height: 20vh;
+  background-color: #FFD700; /* Warm background color */
+  margin-bottom: 20px;
 }
 
-/* Main content styles */
-.maincontent {
+/* Styling for the main content */
+.main-content {
+  background-color: #f0f0f0; /* Default background color */
   padding: 20px;
+  transition: background-color 0.5s; /* Transition for background color change */
 }
 
-/* Footer styles */
+/* Styling for the footer */
 footer {
-  background: #805ad5;
-  padding: 20px;
-  color: #ffffff;
+  background-color: #570229;
+  color: white;
+  padding: 10px;
   text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 3vh;
+}
+.blank {
+  height: 5vh; /* Set the height to 5% of the viewport height */
+  background-color: #87CEEB; /* Cool background color */
+}
+.filter{
+  height: 5vh; /* Set the height to 5% of the viewport height */
+  background-color: #87CEEB; /* Cool background color */
+  padding: 5px;
 }

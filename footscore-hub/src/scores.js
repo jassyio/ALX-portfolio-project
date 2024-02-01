@@ -1,89 +1,31 @@
-import React, { useEffect, useState } from 'react';
+// Import necessary dependencies
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function FixtureList() {
-  const [fixtures, setFixtures] = useState([]);
-  const [loading, setLoading] = useState(true);
+const Scores = ({ selectedLeague, selectedTeam }) => {
+  const [scoresData, setScoresData] = useState([]);
 
   useEffect(() => {
-    const fetchFixtures = async () => {
+    const fetchScoresData = async () => {
       try {
-        const response = await axios.get(
-          'https://api.sportmonks.com/football/v3/fixtures/date/2024-01-21?includes=participants;scores'
-        );
-
-        setFixtures(response.data.data);
-        setLoading(false);
-        console.log('API Response:', response.data);
+        const response = await axios.get(`YOUR_BACKEND_URL/api/scores?league=${selectedLeague}&team=${selectedTeam}`);
+        setScoresData(response.data);
       } catch (error) {
-        console.error('Error fetching fixtures:', error);
+        console.error('Error fetching scores data:', error);
       }
     };
 
-    fetchFixtures();
-  }, []); // Empty dependency array ensures useEffect runs only once
+    fetchScoresData();
+  }, [selectedLeague, selectedTeam]);
 
   return (
     <div>
-      <h2>Fixture List</h2>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <ul>
-          {fixtures.map((fixture) => (
-            <li key={fixture.id}>
-              {fixture.id} - {fixture.date_time} - {fixture.participants?.home_team?.name} vs {fixture.participants?.away_team?.name}
-            </li>
-          ))}
-        </ul>
-      )}
+      {/* Render scoresData in your component */}
+      {scoresData.map((score) => (
+        <div key={score.id}>{/* Render individual score data here */}</div>
+      ))}
     </div>
   );
-}
+};
 
-export default FixtureList;
-
-
-// import React, { useEffect, useState } from 'react';
-
-// function Scores() {
-//   const [scores, setScores] = useState([]);
-//   const [error, setError] = useState(null);
-
-//   useEffect(() => {
-//     const fetchScores = async () => {
-//       try {
-//         const response = await fetch('https://api.football-data.org/v4/competitions/PL/matches');
-//         if (!response.ok) {
-//           throw new Error(`HTTP error! Status: ${response.status}`);
-//         }
-
-//         const data = await response.json();
-//         setScores(data.matches);
-//       } catch (error) {
-//         console.error('Error fetching scores:', error);
-//         setError('Error fetching scores. Please check the console for details.');
-//       }
-//     };
-
-//     fetchScores();
-//   }, []); // Empty dependency array ensures useEffect runs only once
-
-//   if (error) {
-//     return <div>{error}</div>;
-//   }
-
-//   return (
-//     <div>
-//       {/* Display scores using the state variable 'scores' */}
-//       {scores.map((match) => (
-//         <div key={match.id}>
-//           {/* Render match information as needed */}
-//           {match.homeTeam.name} vs {match.awayTeam.name}: {match.score.fullTime.homeTeam} - {match.score.fullTime.awayTeam}
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
-
-// export default Scores;
+export default Scores;

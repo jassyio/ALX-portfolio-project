@@ -1,37 +1,29 @@
-// TopScore.js
+// Import necessary dependencies
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-import React from 'react';
+const TopScore = ({ selectedLeague, selectedTeam }) => {
+  const [topScorerData, setTopScorerData] = useState([]);
 
-const TopScore = () => {
-  // Sample data for top scorers in the EPL
-  const topScorers = [
-    { rank: 1, name: 'Player 1', goals: 20 },
-    { rank: 2, name: 'Player 2', goals: 18 },
-    { rank: 3, name: 'Player 3', goals: 15 },
-    // Add more players as needed
-  ];
+  useEffect(() => {
+    const fetchTopScorerData = async () => {
+      try {
+        const response = await axios.get(`YOUR_BACKEND_URL/api/top-scorer?league=${selectedLeague}&team=${selectedTeam}`);
+        setTopScorerData(response.data);
+      } catch (error) {
+        console.error('Error fetching top scorer data:', error);
+      }
+    };
+
+    fetchTopScorerData();
+  }, [selectedLeague, selectedTeam]);
 
   return (
     <div>
-      <h2>Top Scorers - EPL</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Player</th>
-            <th>Goals</th>
-          </tr>
-        </thead>
-        <tbody>
-          {topScorers.map((player) => (
-            <tr key={player.rank}>
-              <td>{player.rank}</td>
-              <td>{player.name}</td>
-              <td>{player.goals}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {/* Render topScorerData in your component */}
+      {topScorerData.map((topScorer) => (
+        <div key={topScorer.id}>{/* Render individual top scorer data here */}</div>
+      ))}
     </div>
   );
 };
