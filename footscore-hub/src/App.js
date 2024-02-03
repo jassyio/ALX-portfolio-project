@@ -1,4 +1,3 @@
-// Import necessary dependencies and components
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import axios from 'axios';
@@ -6,36 +5,52 @@ import Scores from './scores';
 import Table from './table';
 import Fixtures from './fixtures';
 import TopScore from './topScore';
-import Advert from './advert'; // Remove or use it if needed
-import News from './news';     // Remove or use it if needed
+import Advert from './Advert'; // Remove or use it if needed
+import News from './News';     // Remove or use it if needed
 import Transfers from './transfers';
 import './index.css';
 
 // Header component with search functionality and filter dropdowns
-const Header = ({ onFilterChange }) => {
+const Header = ({ onFilterChange, topLeaguesTeams }) => {
   // State variables for search input, selected league, and selected team
   const [searchInput, setSearchInput] = useState('');
   const [selectedLeague, setSelectedLeague] = useState('');
   const [selectedTeam, setSelectedTeam] = useState('');
-  const [topLeaguesTeams, setTopLeaguesTeams] = useState([]);
 
   // Fetch top leagues and their teams when the component mounts
   useEffect(() => {
     fetchTopLeaguesTeams();
   }, []);
 
-  // Fetch top leagues and their teams from the new API endpoint
+  // Fetch top leagues and their teams from the football-data API
   const fetchTopLeaguesTeams = async () => {
     try {
-      const response = await axios.get('/api/leagues-teams');
-      setTopLeaguesTeams(response.data);
+      // Replace 'YOUR_API_KEY' with your actual football-data.org API key
+      const apiKey = 'YOUR_API_KEY';
+      const response = await axios.get(`https://api.football-data.org/v2/competitions?plan=TIER_ONE&areas=2077,2072,2076,2081,2114,2088,2087,2119,2080&seasons=2023`, {
+        headers: {
+          'X-Auth-Token': apiKey,
+        },
+      });
+      // Set the fetched data to state
+      topLeaguesTeams(response.data.competitions);
     } catch (error) {
       console.error('Error fetching top leagues and teams:', error);
     }
   };
 
-  // ... (rest of the code remains unchanged)
-  
+  // Handle search input change
+  const handleSearchInputChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+
+  // Handle search form submission
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    console.log('Search submitted:', searchInput);
+    // Perform search logic here with 'searchInput' value
+  };
+
   // Handle league dropdown change
   const handleLeagueChange = (e) => {
     const league = e.target.value;
@@ -52,7 +67,29 @@ const Header = ({ onFilterChange }) => {
 
   return (
     <header>
-      {/* ... (existing code) */}
+      {/* Blank div for animations or other content */}
+      <div className="blank">{/* You can add animations or other content here later */} animation</div>
+      {/* Line break for styling */}
+      <div className="line-break"></div>
+
+      <div className="main-heading">
+        {/* Website name */}
+        <div className="website-name"> Scorehub</div>
+
+        {/* Search bar */}
+        <form className="searchbar" onSubmit={handleSearchSubmit}>
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchInput}
+            onChange={handleSearchInputChange}
+          />
+          <button type="submit">Search</button>
+        </form>
+
+        {/* Line break for styling */}
+        <div className="line-break"></div>
+      </div>
       
       {/* Filter dropdowns */}
       <div className='filter'>
@@ -61,8 +98,8 @@ const Header = ({ onFilterChange }) => {
           <option value="">Select League</option>
           {/* Map through topLeaguesTeams and create options */}
           {topLeaguesTeams.map((league) => (
-            <option key={league.league} value={league.league}>
-              {league.league}
+            <option key={league.id} value={league.id}>
+              {league.name}
             </option>
           ))}
         </select>
@@ -135,8 +172,10 @@ const Body = ({ selectedItem, onFilterChange }) => {
         return { content: <Transfers selectedLeague={onFilterChange.selectedLeague} selectedTeam={onFilterChange.selectedTeam} />, backgroundColor: 'lightcoral' };
       case 'Fixtures':
         return { content: <Fixtures selectedLeague={onFilterChange.selectedLeague} selectedTeam={onFilterChange.selectedTeam} />, backgroundColor: 'lightyellow' };
-      case 'Table':
-        return { content: <Table selectedLeague={onFilterChange.selectedLeague} selectedTeam={onFilterChange.selectedTeam} />, backgroundColor: 'lightyellow' }; // Updated 'table' to 'Table'
+      case 'News':
+        return { content: <News />, backgroundColor: 'lightyellow' };      
+      case 'Advert':
+        return { content: <Advert />, backgroundColor: 'lightyellow' }; 
       default:
         return { content: <div>Selected item content, e.g., scores clicked</div>, backgroundColor: 'white' };
     }
@@ -147,8 +186,6 @@ const Body = ({ selectedItem, onFilterChange }) => {
   // Render content with background color
   return (
     <div className="body" style={{ backgroundColor }}>
-    
-
       <div className="advertisement">Area to put advertisement</div>
       <div className="main-content">{content}</div>
     </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
- const News = () => {
+const Test = () => {
     return (
       <div>
         <h2>test</h2>
@@ -10,4 +10,4 @@ import React from 'react';
     );
   };
 
-export default News;
+export default Test;
