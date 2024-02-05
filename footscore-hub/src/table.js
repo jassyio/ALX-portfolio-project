@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Table = ({ selectedLeague, selectedTeam }) => {
+const table = ({ selectedLeague, selectedTeam }) => {
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
@@ -28,4 +28,4 @@ const Table = ({ selectedLeague, selectedTeam }) => {
   );
 };
 
-export default Table;
+export default table;

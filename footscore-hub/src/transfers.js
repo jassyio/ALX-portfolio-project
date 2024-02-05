@@ -2,7 +2,8 @@
 
 import React from 'react';
 
-const Transfers = () => {
+
+const transfers = () => {
   return (
     <div>
       <h2>Transfer News</h2>
@@ -24,4 +25,4 @@ const Transfers = () => {
   );
 };
 
-export default Transfers;
+export default transfers;

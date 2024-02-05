@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import Scores from './scores';
-import Table from './table';
+import table from './table';
 import Fixtures from './fixtures';
 import TopScore from './topScore';
 import Advert from './Advert'; // Remove or use it if needed
 import News from './News';     // Remove or use it if needed
-import Transfers from './transfers';
+import transfers from './transfers';
 import './index.css';
 
 // Header component with search functionality and filter dropdowns
@@ -168,8 +168,8 @@ const Body = ({ selectedItem, onFilterChange }) => {
         return { content: <Scores selectedLeague={onFilterChange.selectedLeague} selectedTeam={onFilterChange.selectedTeam} />, backgroundColor: 'lightblue' };
       case 'Top Scorer':
         return { content: <TopScore selectedLeague={onFilterChange.selectedLeague} selectedTeam={onFilterChange.selectedTeam} />, backgroundColor: 'lightgreen' };
-      case 'Transfers':
-        return { content: <Transfers selectedLeague={onFilterChange.selectedLeague} selectedTeam={onFilterChange.selectedTeam} />, backgroundColor: 'lightcoral' };
+      case 'transfers':
+        return { content: <transfers />, backgroundColor: 'lightcoral' };
       case 'Fixtures':
         return { content: <Fixtures selectedLeague={onFilterChange.selectedLeague} selectedTeam={onFilterChange.selectedTeam} />, backgroundColor: 'lightyellow' };
       case 'News':
@@ -241,7 +241,7 @@ function App() {
         />
         {/* ... (similar modifications for other routes) */}
         <Route path="/news" element={<News />} /> {/* Route for the News component */}
-
+        <Route path="/transfers" element={<transfers />} /> {/* Route for the News component */}
       </Routes>
       
     </Router>
