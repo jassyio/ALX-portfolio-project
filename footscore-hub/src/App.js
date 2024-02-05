@@ -240,7 +240,10 @@ function App() {
           }
         />
         {/* ... (similar modifications for other routes) */}
+        <Route path="/news" element={<News />} /> {/* Route for the News component */}
+
       </Routes>
+      
     </Router>
   );
 }
