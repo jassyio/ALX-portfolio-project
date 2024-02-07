@@ -137,7 +137,7 @@ if __name__ == '__main__':
     # Fetch data from the Football Data API and store it in the database
     football_data = fetch_football_data()
     if football_data:
-        insert_football_data(football_data)
+        insert_competitions_data(football_data)
 
     # Run the Flask app
     app.run(port=5000, debug=True)
