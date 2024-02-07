@@ -85,10 +85,11 @@ footer {
 }
 
 .blank {
-  height: 5vh; /* Set the height to 5% of the viewport height */
+  height: 4vh; /* Set the height to 5% of the viewport height */
   background-color: #87ceeb; /* Cool background color */
   position: relative; /* Add relative positioning */
   overflow: hidden; /* Hide overflow */
+  padding-bottom: 1%;
 }
 
 .filter {
@@ -97,36 +98,58 @@ footer {
   padding: 5px;
 }
 
-/* Animation for football and Scorehub */
-@keyframes football-roll {
-  0% { left: 100%; }
-  100% { left: 0%; }
+/* Animation for footballs and Scorehub */
+@keyframes football-roll-left {
+  50% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes football-roll-right {
+  50% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 @keyframes blast {
   0% { transform: scale(0); }
-  100% { transform: scale(1); }
+  100% { transform: scale(10); }
 }
 
-.football {
+.animation-container {
   position: absolute;
-  top: 50%;
+  width: 200%; /* Double the width of the viewport */
+  height: 100%;
+  animation-duration: 10s; /* Adjust duration for footballs to move across the screen */
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; /* Ensure linear motion */
+}
+
+.football-left,
+.football-right {
+  position: absolute;
+  top: 25%;
   transform: translateY(-50%);
-  width: 50px; /* Adjust size as needed */
-  height: 50px; /* Adjust size as needed */
+  width: 25px; /* Adjust size as needed */
+  height: 25px; /* Adjust size as needed */
   background-image: url('images/football.png'); /* Replace 'football.png' with your football image */
-  background-size: cover;
-  animation: football-roll 5s linear infinite; /* Adjust duration for smooth rolling */
+  background-size: 100%;
+}
+
+.football-left {
+  animation: football-roll-left 5s linear infinite; /* Adjust duration for smooth rolling */
+}
+
+.football-right {
+  animation: football-roll-right 5s linear infinite; /* Adjust duration for smooth rolling */
 }
 
 #scorehub {
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2rem; /* Adjust size as needed */
   opacity: 0;
-  animation-duration: 2s; /* Adjust duration as needed */
+  animation-duration: 5s; /* Adjust duration as needed */
   animation-fill-mode: forwards;
 }
 
@@ -134,3 +157,4 @@ footer {
   animation-name: blast;
   opacity: 1;
 }
+
