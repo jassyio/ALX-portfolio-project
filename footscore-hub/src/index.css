@@ -6,23 +6,19 @@
 }
 
 .line-break {
-  
   width: 2px;
   background-color: green;
 }
 
-
 /* Styling for website name and searchbar */
 .main-heading {
   display: flex;
-  
 }
 
 .website-name {
   font-size: 2.5rem;
   text-align: left;
-  text-decoration:dashed;
-
+  text-decoration: dashed;
 }
 
 .searchbar {
@@ -65,7 +61,7 @@
 /* Styling for the advertisement */
 .advertisement {
   height: 20vh;
-  background-color: #FFD700; /* Warm background color */
+  background-color: #ffd700; /* Warm background color */
   margin-bottom: 20px;
 }
 
@@ -87,12 +83,54 @@ footer {
   width: 100%;
   height: 3vh;
 }
+
 .blank {
   height: 5vh; /* Set the height to 5% of the viewport height */
-  background-color: #87CEEB; /* Cool background color */
+  background-color: #87ceeb; /* Cool background color */
+  position: relative; /* Add relative positioning */
+  overflow: hidden; /* Hide overflow */
 }
-.filter{
+
+.filter {
   height: 5vh; /* Set the height to 5% of the viewport height */
-  background-color: #87CEEB; /* Cool background color */
+  background-color: #87ceeb; /* Cool background color */
   padding: 5px;
+}
+
+/* Animation for football and Scorehub */
+@keyframes football-roll {
+  0% { left: 100%; }
+  100% { left: 0%; }
+}
+
+@keyframes blast {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+.football {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px; /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+  background-image: url('images/football.png'); /* Replace 'football.png' with your football image */
+  background-size: cover;
+  animation: football-roll 5s linear infinite; /* Adjust duration for smooth rolling */
+}
+
+#scorehub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem; /* Adjust size as needed */
+  opacity: 0;
+  animation-duration: 2s; /* Adjust duration as needed */
+  animation-fill-mode: forwards;
+}
+
+#scorehub.blast {
+  animation-name: blast;
+  opacity: 1;
 }

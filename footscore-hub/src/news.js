@@ -1,4 +1,3 @@
-// news.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -7,8 +6,10 @@ const News = () => {
 
   useEffect(() => {
     // Fetch data from the Flask API when the component mounts
-    axios.get('http://localhost:5000/api/news') // Update the URL if your Flask app is running on a different port
+    axios.get('http://localhost:5000/unlimited/News') // Updated URL to match Flask route
       .then(response => {
+        console.log(response.data);
+        
         setNewsData(response.data);
       })
       .catch(error => {
@@ -23,10 +24,12 @@ const News = () => {
         <div key={newsItem.id}>
           <h3>{newsItem.title}</h3>
           <p>{newsItem.content}</p>
+          <p>Category: {newsItem.category}</p>
           {/* Add more properties as needed */}
         </div>
       ))}
     </div>
   );
 };
-export default News ;
+
+export default News;
