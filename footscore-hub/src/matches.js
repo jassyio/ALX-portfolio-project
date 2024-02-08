@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const matches = ({ selectedLeague, selectedTeam }) => {
+const Matches = ({ selectedLeague, selectedTeam }) => {
   const [matchesData, setmatchesData] = useState([]);
 
   useEffect(() => {
@@ -35,4 +35,4 @@ const matches = ({ selectedLeague, selectedTeam }) => {
   );
 };
 
-export default matches;
+export default Matches;

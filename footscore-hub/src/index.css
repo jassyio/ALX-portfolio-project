@@ -1,3 +1,14 @@
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
 /* Add styling for the header */
 .header {
   display: flex;
@@ -59,7 +70,7 @@
 }
 
 /* Styling for the advertisement */
-.advertisement {
+.advert-container{
   height: 20vh;
   background-color: #ffd700; /* Warm background color */
   margin-bottom: 20px;
@@ -70,6 +81,8 @@
   background-color: #f0f0f0; /* Default background color */
   padding: 20px;
   transition: background-color 0.5s; /* Transition for background color change */
+  text-align: center;
+  justify-content: space-around;
 }
 
 /* Styling for the footer */
@@ -85,11 +98,12 @@ footer {
 }
 
 .blank {
-  height: 4vh; /* Set the height to 5% of the viewport height */
+  height: 5vh; /* Set the height to 5% of the viewport height */
   background-color: #87ceeb; /* Cool background color */
   position: relative; /* Add relative positioning */
   overflow: hidden; /* Hide overflow */
-  padding-bottom: 1%;
+  padding-bottom:3.5% ;
+  
 }
 
 .filter {
@@ -99,62 +113,47 @@ footer {
 }
 
 /* Animation for footballs and Scorehub */
-@keyframes football-roll-left {
-  50% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
 
-@keyframes football-roll-right {
-  50% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-@keyframes blast {
-  0% { transform: scale(0); }
-  100% { transform: scale(10); }
-}
-
-.animation-container {
-  position: absolute;
-  width: 200%; /* Double the width of the viewport */
-  height: 100%;
-  animation-duration: 10s; /* Adjust duration for footballs to move across the screen */
-  animation-iteration-count: infinite;
-  animation-timing-function: linear; /* Ensure linear motion */
-}
-
-.football-left,
-.football-right {
-  position: absolute;
-  top: 25%;
-  transform: translateY(-50%);
-  width: 25px; /* Adjust size as needed */
-  height: 25px; /* Adjust size as needed */
-  background-image: url('images/football.png'); /* Replace 'football.png' with your football image */
-  background-size: 100%;
-}
 
 .football-left {
-  animation: football-roll-left 5s linear infinite; /* Adjust duration for smooth rolling */
+  display: block;
+  width: 50px; /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+  background: url('images/football.png') center/cover; /* Use your football image */
+  border-radius: 50%;
+  
+  /* Animation to spin and move the football */
+  animation: spin 1000ms linear infinite, moveLeftToRight 20s linear infinite;
+  
+  position: absolute;
+  left: -50px; /* Start position from the left side */
 }
 
-.football-right {
-  animation: football-roll-right 5s linear infinite; /* Adjust duration for smooth rolling */
+/* Spinning the football using key frames */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
+
+/* Move football from left to right */
+@keyframes moveLeftToRight {
+  0%   { left: -50px; } /* Start position from the left side */
+  100% { left: calc(100% + 50px); } /* End position beyond the right side */
+}
+
 
 #scorehub {
-  position: relative;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 2rem; /* Adjust size as needed */
+  font-size: 1.5rem; /* Adjust size as needed */
   opacity: 0;
-  animation-duration: 5s; /* Adjust duration as needed */
+  animation-duration: 1s; /* Adjust duration as needed */
   animation-fill-mode: forwards;
 }
 
 #scorehub.blast {
   animation-name: blast;
-  opacity: 1;
+  opacity: 2;
 }
-

@@ -9,7 +9,6 @@ const News = () => {
     axios.get('http://localhost:5000/unlimited/News') // Updated URL to match Flask route
       .then(response => {
         console.log(response.data);
-        
         setNewsData(response.data);
       })
       .catch(error => {
@@ -18,7 +17,7 @@ const News = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ backgroundColor: 'orange' }}>
       <h2>News</h2>
       {newsData.map(newsItem => (
         <div key={newsItem.id}>

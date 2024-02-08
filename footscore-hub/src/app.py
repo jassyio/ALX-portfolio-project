@@ -42,39 +42,13 @@ def fetch_football_data():
     else:
         print('Failed to fetch data from the Football Data API')
         return None
-@app.route('/competitions', methods=['GET'])
-def get_all_competitions():
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT id, name, country, season FROM competitions")
-    competitions = cur.fetchall()
-    cur.close()
-    return jsonify(competitions)
 
-
-
-# # Function to insert data into the competitions table in the database
-# def insert_competitions_data(competitions):
-#     connection = create_connection()
-#     if connection is not None:
-#         try:
-#             cursor = connection.cursor()
-#             for competition in competitions:
-#                 query = 'INSERT INTO competitions (name, code, type, emblem) VALUES (%s, %s, %s, %s)'
-#                 cursor.execute(query, (competition['name'], competition['code'], competition['type'], competition['emblem']))
-#             connection.commit()
-#             print('Competitions data inserted successfully')
-#         except Error as e:
-#             print('Error inserting competitions data:', e)
-#         finally:
-#             cursor.close()
-#             connection.close()
-#     else:
-#         print('Failed to establish database connection')
-
+# Route for home page
 @app.route('/')
 def home():
     return "Welcome to Footscore Hub!"  # You can customize this message
 
+# Route for fetching news
 @app.route('/unlimited/News')
 def get_news():
     connection = create_connection()
@@ -95,7 +69,9 @@ def get_news():
     else:
         return jsonify({'error': 'Failed to establish database connection'}), 500
 
-@app.route('/competitions')
+# Route for inserting competition data into the database
+# Route for fetching competition data from the database
+@app.route('/unlimited/competitions')
 def get_competitions():
     connection = create_connection()
     if connection is not None:
@@ -114,6 +90,7 @@ def get_competitions():
     else:
         return jsonify({'error': 'Failed to establish database connection'}), 500
 
+# Route for fetching teams by competition ID
 @app.route('/teams/<int:competition_id>')
 def get_teams_by_competition(competition_id):
     connection = create_connection()
@@ -134,10 +111,4 @@ def get_teams_by_competition(competition_id):
         return jsonify({'error': 'Failed to establish database connection'}), 500
 
 if __name__ == '__main__':
-    # Fetch data from the Football Data API and store it in the database
-    football_data = fetch_football_data()
-    if football_data:
-        insert_competitions_data(football_data)
-
-    # Run the Flask app
     app.run(port=5000, debug=True)
