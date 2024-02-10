@@ -1,8 +1,7 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 import mysql.connector
 from mysql.connector import Error
-import requests
 
 app = Flask(__name__)
 CORS(app)
@@ -103,6 +102,54 @@ def get_teams_by_competition(competition_id):
             return jsonify(teams)
         except Error as e:
             print('Error fetching teams:', e)
+            return jsonify({'error': 'Internal Server Error'}), 500
+        finally:
+            cursor.close()
+            connection.close()
+    else:
+        return jsonify({'error': 'Failed to establish database connection'}), 500
+
+# Route for inserting advert data into the database
+@app.route('/unlimited/advert', methods=['POST'])
+def insert_advert():
+    connection = create_connection()
+    if connection is not None:
+        try:
+            cursor = connection.cursor()
+            # Extract advert data from the request
+            data = request.json
+            title = data.get('title')
+            description = data.get('description')
+            image_url = data.get(r'C:\Users\User\Pictures\adverts\ad.png')
+
+            # Insert advert data into the database
+            query = 'INSERT INTO advert (title, description, image_url) VALUES (%s, %s, %s)'
+            cursor.execute(query, (title, description, image_url))
+            connection.commit()
+            print(data)
+            return jsonify({'message': 'Advert inserted successfully'}), 201
+        except Error as e:
+            print('Error inserting advert data:', e)
+            return jsonify({'error': 'Internal Server Error'}), 500
+        finally:
+            cursor.close()
+            connection.close()
+    else:
+        return jsonify({'error': 'Failed to establish database connection'}), 500
+
+# Route for fetching advert data from the database
+@app.route('/unlimited/advert', methods=['GET'])
+def get_adverts():
+    connection = create_connection()
+    if connection is not None:
+        try:
+            cursor = connection.cursor(dictionary=True)
+            query = 'SELECT * FROM advert'
+            cursor.execute(query)
+            adverts = cursor.fetchall()
+            return jsonify(adverts)
+        except Error as e:
+            print('Error fetching advert data:', e)
             return jsonify({'error': 'Internal Server Error'}), 500
         finally:
             cursor.close()

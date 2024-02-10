@@ -28,6 +28,8 @@ const Header = ({ onFilterChange }) => {
     fetchData();
   }, []);
 
+  
+
   const handleCompetitionChange = async (e) => {
     const competitionId = e.target.value;
     setSelectedCompetition(competitionId);
@@ -145,8 +147,10 @@ const Layout = ({ children, onFilterChange }) => (
       <Header onFilterChange={onFilterChange} />
       <Menu onMenuItemClick={onFilterChange} />
     </div>
-    <div className="advert-container">
-      
+    <div className="advert">
+      <div>
+        <Advert/>
+      </div>
     </div>
     <div className="body-container" style={{ backgroundColor: '#f0f0f0' }}>
       {children}

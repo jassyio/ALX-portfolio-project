@@ -44,7 +44,8 @@ body {
   justify-content: space-around;
   background-color: #444;
   color: white;
-  padding: 10px;
+  padding-top: 2px;
+  margin-top: 0.5%;
 }
 
 /* Styling for menu items */
@@ -66,32 +67,35 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 5px;
+  height: auto;
 }
 
 /* Styling for the advertisement */
-.advert-container{
+.advert{
   height: 20vh;
-  background-color: #ffd700; /* Warm background color */
-  margin-bottom: 20px;
+  background-color: #d7ddd7; /* Warm background color */
+  margin-bottom: 10px;
+  padding-top: 0.5%;
 }
 
 /* Styling for the main content */
 .main-content {
-  background-color: #f0f0f0; /* Default background color */
-  padding: 20px;
+  background-color: #bba2a2; /* Default background color */
+  padding: 10px;
   transition: background-color 0.5s; /* Transition for background color change */
   text-align: center;
   justify-content: space-around;
+  align-items: center;
 }
 
 /* Styling for the footer */
 footer {
   background-color: #570229;
   color: white;
-  padding: 10px;
+  padding: 1px;
   text-align: center;
-  position: fixed;
+  position:absolute;
   bottom: 0;
   width: 100%;
   height: 3vh;
@@ -99,7 +103,7 @@ footer {
 
 .blank {
   height: 5vh; /* Set the height to 5% of the viewport height */
-  background-color: #87ceeb; /* Cool background color */
+  background-color: #4b0404; /* Cool background color */
   position: relative; /* Add relative positioning */
   overflow: hidden; /* Hide overflow */
   padding-bottom:3.5% ;
@@ -123,7 +127,7 @@ footer {
   border-radius: 50%;
   
   /* Animation to spin and move the football */
-  animation: spin 1000ms linear infinite, moveLeftToRight 20s linear infinite;
+  animation: spin 2000ms linear infinite, moveLeftToRight 30s linear infinite;
   
   position: absolute;
   left: -50px; /* Start position from the left side */
@@ -148,8 +152,8 @@ footer {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 1.5rem; /* Adjust size as needed */
-  opacity: 0;
-  animation-duration: 1s; /* Adjust duration as needed */
+  opacity: 3;
+  animation-duration: 5s; /* Adjust duration as needed */
   animation-fill-mode: forwards;
 }
 
@@ -157,3 +161,16 @@ footer {
   animation-name: blast;
   opacity: 2;
 }
+.advert-container {
+  display: flex;
+  justify-content: space-between;
+  height: 20vh;
+
+}
+
+.advert-container img {
+  width: 25%; /* Adjust the width as needed */
+  height: 20vh; /* Maintain aspect ratio */
+  padding: 0%;
+}
+

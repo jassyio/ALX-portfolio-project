@@ -27,6 +27,7 @@ const Matches = ({ selectedLeague, selectedTeam }) => {
   return (
     <div>
       <h2>matches</h2>
+      {/* <img src='public/images/ad1.png' alt='ad1'/> */}
       {/* Render matchesData in your component */}
       {matchesData.map((score) => (
         <div key={score.id}>{/* Render individual score data here */}</div>
