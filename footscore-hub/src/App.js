@@ -8,53 +8,45 @@ import News from './News';
 import Advert from './Advert';
 import Footer from "./Footer";
 
-const Header = ({ onFilterChange }) => {
+const Header = ({ onLeagueChange, onMenuItemClick }) => {
   const [searchInput, setSearchInput] = useState('');
-  const [selectedCompetition, setSelectedCompetition] = useState('');
-  const [selectedTeam, setSelectedTeam] = useState('');
-  const [competitions, setCompetitions] = useState([]);
-  const [teams, setTeams] = useState([]);
+  const [selectedLeague, setSelectedLeague] = useState('');
+  const [leagues, setLeagues] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchLeagues = async () => {
       try {
-        const response = await axios.get('/unlimited/competitions');
-        setCompetitions(response.data);
+        const response = await axios.get('http://localhost:5000/scorehub/leagues');
+        setLeagues(response.data);
       } catch (error) {
-        console.error('Error fetching competitions:', error);
+        console.error('Error fetching leagues:', error);
       }
     };
 
-    fetchData();
+    fetchLeagues();
   }, []);
 
+  const handleLeagueChange = (e) => {
+    const leagueId = e.target.value;
+    setSelectedLeague(leagueId);
+    onLeagueChange(leagueId);
+  };
+
+  const handleMenuItemClick = (item) => {
+    onMenuItemClick(item);
+  };
   
-
-  const handleCompetitionChange = async (e) => {
-    const competitionId = e.target.value;
-    setSelectedCompetition(competitionId);
-    onFilterChange({ selectedCompetition: competitionId, selectedTeam });
-    try {
-      const response = await axios.get(`/unlimited/competitions/${competitionId}/teams`);
-      setTeams(response.data);
-    } catch (error) {
-      console.error('Error fetching teams:', error);
-    }
-  };
-
-  const handleTeamChange = (e) => {
-    const teamId = e.target.value;
-    setSelectedTeam(teamId);
-    onFilterChange({ selectedCompetition, selectedTeam: teamId });
-  };
-
   return (
     <header>
       <div className="blank">
         <div className="animation-container">
           <div className="football-left"></div>
           <div className="football-right"></div>
-          <div id="scorehub" className="blast">Scorehub</div>
+          <div className="updates-container">
+            <div className="updates">
+              <span>Upcoming Website</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -75,56 +67,26 @@ const Header = ({ onFilterChange }) => {
       </div>
       
       <div className='filter'>
-        <select onChange={handleCompetitionChange} value={selectedCompetition}>
-          <option value="">Select Competition</option>
-          {competitions.map((competition) => (
-            <option key={competition.id} value={competition.id}>
-              {competition.name}
-            </option>
-          ))}
-        </select>
-
-        <select onChange={handleTeamChange} value={selectedTeam}>
-          <option value="">Select Team</option>
-          {teams.map((team) => (
-            <option key={team.id} value={team.id}>
-              {team.name}
+        <select onChange={handleLeagueChange} value={selectedLeague}>
+          <option value="">Select League</option>
+          {leagues.map((league) => (
+            <option key={league.id} value={league.id}>
+              {league.name}
             </option>
           ))}
         </select>
       </div>
+
+      <nav className="menu">
+        <Link to="/" className="menu-item" onClick={() => handleMenuItemClick('Home')} style={{ backgroundColor: '#87421f' }}>Home</Link>
+        <Link to="/matches" className="menu-item" onClick={() => handleMenuItemClick('Matches')} style={{ backgroundColor: 'goldenrod' }}>Matches</Link>
+        <Link to="/fixtures" className="menu-item" onClick={() => handleMenuItemClick('Fixtures')} style={{ backgroundColor: 'pink' }}>Fixtures</Link>
+        <Link to="/table" className="menu-item" onClick={() => handleMenuItemClick('Table')} style={{ backgroundColor: '#8B4513' }}>Table</Link>
+        <Link to="/news" className="menu-item" onClick={() => handleMenuItemClick('News')} style={{ backgroundColor: '#32CD32' }}>News</Link>
+      </nav>
     </header>
   );
 };
-
-const Menu = ({ onMenuItemClick }) => {
-  const menuItems = [
-    { to: '/', label: 'Home', bgColor: '#87421f' },
-    { to: '/matches', label: 'Matches', bgColor: 'goldenrod' },
-    { to: '/fixtures', label: 'Fixtures', bgColor: 'pink' },
-    { to: '/table', label: 'Table', bgColor: '#8B4513' },
-    { to: '/news', label: 'News', bgColor: '#32CD32' },
-  ];
-
-  return (
-    <nav className="menu">
-      {menuItems.map((item) => (
-        <Link
-          key={item.label}
-          to={item.to}
-          className="menu-item"
-          onClick={() => onMenuItemClick(item.label)}
-          style={{ backgroundColor: item.bgColor }}
-        >
-          {item.label}
-        </Link>
-      ))}
-    </nav>
-  );
-};
-
-
-
 
 const Body = ({ selectedItem }) => {
   switch (selectedItem) {
@@ -141,11 +103,10 @@ const Body = ({ selectedItem }) => {
   }
 };
 
-const Layout = ({ children, onFilterChange }) => (
+const Layout = ({ children, onMenuItemClick }) => (
   <div className="flex flex-col h-screen">
     <div className="dashboard">
-      <Header onFilterChange={onFilterChange} />
-      <Menu onMenuItemClick={onFilterChange} />
+      <Header onMenuItemClick={onMenuItemClick} />
     </div>
     <div className="advert">
       <div>
@@ -159,8 +120,6 @@ const Layout = ({ children, onFilterChange }) => (
   </div>
 );
 
-
-
 function App() {
   const [selectedItem, setSelectedItem] = useState('');
 
@@ -170,12 +129,9 @@ function App() {
 
   return (
     <Router>
-      <Layout onFilterChange={handleMenuItemClick}>
+      <Layout onMenuItemClick={handleMenuItemClick}>
         <Routes>
-          <Route
-            path="/"
-            element={<Body selectedItem={selectedItem} />}
-          />
+          <Route path="/" element={<Body selectedItem={selectedItem} />} />
           <Route path="/matches" element={<Matches />} />
           <Route path="/fixtures" element={<Fixtures />} />
           <Route path="/table" element={<Table />} />
@@ -187,6 +143,5 @@ function App() {
     </Router>
   );
 }
-
 
 export default App;

@@ -26,21 +26,7 @@ def create_connection():
         return None
 
 # Function to fetch data from the Football Data API
-def fetch_football_data():
-    # Make a GET request to the Football Data API to fetch data
-    api_url = 'https://api.football-data.org/v4/matches?status=FINISHED&competitions=CL'
-    headers = {'X-Auth-Token': '0d2f22de8f4e40d3804c8d2b3239ef5b'}  # Replace 'YOUR_API_KEY' with your actual API key
-    response = requests.get(api_url, headers=headers)
-
-    # Check if the request was successful (status code 200)
-    if response.status_code == 200:
-        data = response.json()
-        print("Response data:", data)  # Print the response data for debugging
-        if 'competitions' in data:
-            return data['competitions']  # Extract relevant data from the response
-    else:
-        print('Failed to fetch data from the Football Data API')
-        return None
+# Note: You haven't implemented this function. You may need to implement it if required.
 
 # Route for home page
 @app.route('/')
@@ -48,7 +34,7 @@ def home():
     return "Welcome to Footscore Hub!"  # You can customize this message
 
 # Route for fetching news
-@app.route('/unlimited/News')
+@app.route('/unlimited/news')
 def get_news():
     connection = create_connection()
     if connection is not None:
@@ -57,7 +43,7 @@ def get_news():
             query = 'SELECT * FROM news'
             cursor.execute(query)
             news_data = cursor.fetchall()
-            print(news_data)
+            # print(news_data)
             return jsonify(news_data)
         except Error as e:
             print('Error fetching news data:', e)
@@ -68,8 +54,7 @@ def get_news():
     else:
         return jsonify({'error': 'Failed to establish database connection'}), 500
 
-# Route for inserting competition data into the database
-# Route for fetching competition data from the database
+# Route for fetching competitions
 @app.route('/unlimited/competitions')
 def get_competitions():
     connection = create_connection()
@@ -90,7 +75,7 @@ def get_competitions():
         return jsonify({'error': 'Failed to establish database connection'}), 500
 
 # Route for fetching teams by competition ID
-@app.route('/teams/<int:competition_id>')
+@app.route('/unlimited/teams/<int:competition_id>')
 def get_teams_by_competition(competition_id):
     connection = create_connection()
     if connection is not None:
@@ -120,13 +105,12 @@ def insert_advert():
             data = request.json
             title = data.get('title')
             description = data.get('description')
-            image_url = data.get(r'C:\Users\User\Pictures\adverts\ad.png')
+            image_url = data.get('image_url')
 
             # Insert advert data into the database
             query = 'INSERT INTO advert (title, description, image_url) VALUES (%s, %s, %s)'
             cursor.execute(query, (title, description, image_url))
             connection.commit()
-            print(data)
             return jsonify({'message': 'Advert inserted successfully'}), 201
         except Error as e:
             print('Error inserting advert data:', e)

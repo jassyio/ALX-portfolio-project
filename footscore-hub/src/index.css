@@ -15,7 +15,6 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-
 .line-break {
   width: 2px;
   background-color: green;
@@ -69,6 +68,7 @@ body {
   align-items: center;
   padding: 5px;
   height: auto;
+  text-align: center;
 }
 
 /* Styling for the advertisement */
@@ -123,7 +123,7 @@ footer {
   display: block;
   width: 50px; /* Adjust size as needed */
   height: 50px; /* Adjust size as needed */
-  background: url('images/football.png') center/cover; /* Use your football image */
+  background: url('../public/images/football.png') center/cover; 
   border-radius: 50%;
   
   /* Animation to spin and move the football */
@@ -145,22 +145,6 @@ footer {
   100% { left: calc(100% + 50px); } /* End position beyond the right side */
 }
 
-
-#scorehub {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.5rem; /* Adjust size as needed */
-  opacity: 3;
-  animation-duration: 5s; /* Adjust duration as needed */
-  animation-fill-mode: forwards;
-}
-
-#scorehub.blast {
-  animation-name: blast;
-  opacity: 2;
-}
 .advert-container {
   display: flex;
   justify-content: space-between;
@@ -173,4 +157,18 @@ footer {
   height: 20vh; /* Maintain aspect ratio */
   padding: 0%;
 }
+/* Add this to the end of your CSS file */
 
+.animation-container {
+  position: relative;
+}
+
+
+.updates-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  overflow: hidden;
+}
