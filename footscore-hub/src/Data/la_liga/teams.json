@@ -1,0 +1,23 @@
+[
+    { "id": 1, "name": "Real Madrid", "logo": "path/to/real_madrid_logo.png" },
+    { "id": 2, "name": "FC Barcelona", "logo": "path/to/barcelona_logo.png" },
+    { "id": 3, "name": "Atlético Madrid", "logo": "path/to/atletico_madrid_logo.png" },
+    { "id": 4, "name": "Sevilla FC", "logo": "path/to/sevilla_logo.png" },
+    { "id": 5, "name": "Real Sociedad", "logo": "path/to/real_sociedad_logo.png" },
+    { "id": 6, "name": "Villarreal CF", "logo": "path/to/villarreal_logo.png" },
+    { "id": 7, "name": "Real Betis", "logo": "path/to/real_betis_logo.png" },
+    { "id": 8, "name": "Athletic Bilbao", "logo": "path/to/athletic_bilbao_logo.png" },
+    { "id": 9, "name": "Celta Vigo", "logo": "path/to/celta_vigo_logo.png" },
+    { "id": 10, "name": "Granada CF", "logo": "path/to/granada_logo.png" },
+    { "id": 11, "name": "Levante UD", "logo": "path/to/levante_logo.png" },
+    { "id": 12, "name": "Valencia CF", "logo": "path/to/valencia_logo.png" },
+    { "id": 13, "name": "SD Eibar", "logo": "path/to/eibar_logo.png" },
+    { "id": 14, "name": "Getafe CF", "logo": "path/to/getafe_logo.png" },
+    { "id": 15, "name": "Deportivo Alavés", "logo": "path/to/alaves_logo.png" },
+    { "id": 16, "name": "Real Valladolid", "logo": "path/to/valladolid_logo.png" },
+    { "id": 17, "name": "SD Huesca", "logo": "path/to/huesca_logo.png" },
+    { "id": 18, "name": "Elche CF", "logo": "path/to/elche_logo.png" },
+    { "id": 19, "name": "CA Osasuna", "logo": "path/to/osasuna_logo.png" },
+    { "id": 20, "name": "Cádiz CF", "logo": "path/to/cadiz_logo.png" }
+  ]
+  

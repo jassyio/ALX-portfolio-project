@@ -1,0 +1,23 @@
+[
+    { "id": 1, "name": "Manchester United", "logo": "path/to/manchester_united_logo.png" },
+    { "id": 2, "name": "Liverpool", "logo": "path/to/liverpool_logo.png" },
+    { "id": 3, "name": "Manchester City", "logo": "path/to/manchester_city_logo.png" },
+    { "id": 4, "name": "Chelsea", "logo": "path/to/chelsea_logo.png" },
+    { "id": 5, "name": "Arsenal", "logo": "path/to/arsenal_logo.png" },
+    { "id": 6, "name": "Tottenham Hotspur", "logo": "path/to/tottenham_logo.png" },
+    { "id": 7, "name": "Leicester City", "logo": "path/to/leicester_logo.png" },
+    { "id": 8, "name": "Everton", "logo": "path/to/everton_logo.png" },
+    { "id": 9, "name": "West Ham United", "logo": "path/to/west_ham_logo.png" },
+    { "id": 10, "name": "Aston Villa", "logo": "path/to/aston_villa_logo.png" },
+    { "id": 11, "name": "Wolverhampton Wanderers", "logo": "path/to/wolves_logo.png" },
+    { "id": 12, "name": "Crystal Palace", "logo": "path/to/crystal_palace_logo.png" },
+    { "id": 13, "name": "Southampton", "logo": "path/to/southampton_logo.png" },
+    { "id": 14, "name": "Newcastle United", "logo": "path/to/newcastle_logo.png" },
+    { "id": 15, "name": "Brighton & Hove Albion", "logo": "path/to/brighton_logo.png" },
+    { "id": 16, "name": "Burnley", "logo": "path/to/burnley_logo.png" },
+    { "id": 17, "name": "Fulham", "logo": "path/to/fulham_logo.png" },
+    { "id": 18, "name": "West Bromwich Albion", "logo": "path/to/west_brom_logo.png" },
+    { "id": 19, "name": "Sheffield United", "logo": "path/to/sheffield_logo.png" },
+    { "id": 20, "name": "Leeds United", "logo": "path/to/leeds_logo.png" }
+  ]
+  

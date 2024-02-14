@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "homeTeam": "Manchester City",
+    "awayTeam": "Southampton",
+    "date": "2024-02-18T13:30:00Z",
+    "venue": "Etihad Stadium"
+  },
+  {
+    "id": 2,
+    "homeTeam": "Arsenal",
+    "awayTeam": "Burnley",
+    "date": "2024-02-18T13:30:00Z",
+    "venue": "Emirates Stadium"
+  },
+  {
+    "id": 3,
+    "homeTeam": "Chelsea",
+    "awayTeam": "West Ham United",
+    "date": "2024-02-18T13:30:00Z",
+    "venue": "Stamford Bridge"
+  },
+  {
+    "id": 4,
+    "homeTeam": "Tottenham Hotspur",
+    "awayTeam": "Everton",
+    "date": "2024-02-18T13:30:00Z",
+    "venue": "Tottenham Hotspur Stadium"
+  },
+  {
+    "id": 5,
+    "homeTeam": "Liverpool",
+    "awayTeam": "Nottingham Forest",
+    "date": "2024-02-18T13:30:00Z",
+    "venue": "Anfield"
+  },
+  {
+    "id": 6,
+    "homeTeam": "Crystal Palace",
+    "awayTeam": "Brighton & Hove Albion",
+    "date": "2024-02-18T13:30:00Z",
+    "venue": "Selhurst Park"
+  },
+  {
+    "id": 7,
+    "homeTeam": "Leicester City",
+    "awayTeam": "Brentford",
+    "date": "2024-02-18T13:30:00Z",
+    "venue": "King Power Stadium"
+  },
+  {
+    "id": 8,
+    "homeTeam": "Aston Villa",
+    "awayTeam": "Wolverhampton Wanderers",
+    "date": "2024-02-18T13:30:00Z",
+    "venue": "Villa Park"
+  },
+  {
+    "id": 9,
+    "homeTeam": "Newcastle United",
+    "awayTeam": "Fulham",
+    "date": "2024-02-18T13:30:00Z",
+    "venue": "St. James' Park"
+  },
+  {
+    "id": 10,
+    "homeTeam": "Leeds United",
+    "awayTeam": "Bournemouth",
+    "date": "2024-02-18T13:30:00Z",
+    "venue": "Elland Road"
+  }
+]

@@ -1,37 +1,26 @@
-// Import necessary dependencies
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+import matchesData from './Data/leaguesData/matches.json';
+import './App.css'; // Import CSS file for styling
 
-const Matches = ({ selectedLeague, selectedTeam }) => {
-  const [matchesData, setmatchesData] = useState([]);
-
-  useEffect(() => {
-    const fetchmatchesData = async () => {
-      try {
-        // Replace 'YOUR_API_KEY' with your actual API key
-        const response = await axios.get(`https://api.football-data.org/v4/matches?status=FINISHED&competitions=${selectedLeague}&team=${selectedTeam}`, {
-          headers: {
-            'X-Auth-Token': 'd2f22de8f4e40d3804c8d2b3239ef5b',
-          },
-        });
-        setmatchesData(response.data.matches); // Assuming the API response contains matches data
-      } catch (error) {
-        console.error('Error fetching matches data:', error);
-      }
-    };
-
-    fetchmatchesData();
-  }, [selectedLeague, selectedTeam]);
-  console.log(matchesData);
-
+const Matches = () => {
   return (
-    <div>
-      <h2>matches</h2>
-      {/* <img src='public/images/ad1.png' alt='ad1'/> */}
-      {/* Render matchesData in your component */}
-      {matchesData.map((score) => (
-        <div key={score.id}>{/* Render individual score data here */}</div>
-      ))}
+    <div className="matches-container">
+      <h2 className="matches-heading">Premier League Matches</h2>
+      <div className="matches-list">
+        {matchesData.map((match) => (
+          <div key={match.id} className="match-card">
+            <div className="teams">
+              <p className="team-name">{match.homeTeam}</p>
+              <p className="team-score">{match.score}</p>
+              <p className="team-name">{match.awayTeam}</p>
+            </div>
+            <div className="match-details">
+              <p className="date">Date: {new Date(match.date).toLocaleString()}</p>
+              <p className="venue">Venue: {match.venue}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

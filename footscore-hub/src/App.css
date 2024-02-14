@@ -1,39 +1,207 @@
-.App {
-  text-align: center;
+.matches-container {
+  margin: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.matches-heading {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.matches-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
 
-/* Updated styles for the header section (this is now being set with Tailwind classes in App.js) */
-.App-header {
-  background-color: #007BFF; /* Change to the blue color you prefer */
-  min-height: 100vh;
+.match-card {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.teams {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.team-name {
+  font-weight: bold;
+}
+
+.team-score {
+  font-weight: bold;
+}
+
+.match-details {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.date,
+.venue {
+  color: #666;
+}
+.news-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.news-heading {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.news-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.news-header {
+  margin-bottom: 10px;
+}
+
+.news-title {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.news-category {
+  font-size: 14px;
+  color: #666;
+}
+
+.news-content {
+  color: #444;
+}
+.teams-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.teams-heading {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.teams-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.teams-table th,
+.teams-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.team-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.table-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table-heading {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.premier-league-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.premier-league-table th,
+.premier-league-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.even-row {
+  background-color: #f2f2f2;
+}
+
+.odd-row:hover {
+  background-color: #f5f5f5;
+}
+
+@media screen and (max-width: 600px) {
+  .premier-league-table th,
+  .premier-league-table td {
+    padding: 8px;
   }
-  to {
-    transform: rotate(360deg);
-  }
+}
+.fixtures-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.fixtures-heading {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.fixtures-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.fixture-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.teams {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.team-name {
+  font-weight: bold;
+}
+
+.vs {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0 10px;
+}
+
+.fixture-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.date,
+.venue {
+  color: #2b0fcc;
 }

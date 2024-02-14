@@ -1,29 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+import newsData from './Data/leaguesData/news.json';
+import './App.css'; // Import CSS file for styling
 
 const News = () => {
-  const [newsData, setNewsData] = useState([]);
-
-  useEffect(() => {
-    // Fetch data from the Flask API when the component mounts
-    axios.get('http://localhost:5000/unlimited/News') // Updated URL to match Flask route
-      .then(response => {
-        console.log(response.data);
-        setNewsData(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching news data:', error);
-      });
-  }, []);
-
   return (
-    <div style={{ backgroundColor: 'orange' }}>
-      <h2>News</h2>
+    <div className="news-container">
+      <h2 className="news-heading">Latest News</h2>
       {newsData.map(newsItem => (
-        <div key={newsItem.id}>
-          <h3>{newsItem.title}</h3>
-          <p>{newsItem.content}</p>
-          <p>Category: {newsItem.category}</p>
+        <div key={newsItem.id} className="news-card">
+          <div className="news-header">
+            <h3 className="news-title">{newsItem.title}</h3>
+            <p className="news-category">Category: {newsItem.category}</p>
+          </div>
+          <p className="news-content">{newsItem.content}</p>
           {/* Add more properties as needed */}
         </div>
       ))}
