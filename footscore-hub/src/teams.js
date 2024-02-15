@@ -9,15 +9,17 @@ const Teams = () => {
       <table className="teams-table">
         <thead>
           <tr>
-            <th>Logo</th>
             <th>Name</th>
+            <th>Stadium</th>
+            <th>Manager</th>
           </tr>
         </thead>
         <tbody>
           {teamsData.map((team) => (
             <tr key={team.id}>
-              <td><img src={team.logo} alt={team.name} className="team-logo" /></td>
               <td>{team.name}</td>
+              <td>{team.stadium}</td>
+              <td>{team.manager}</td>
             </tr>
           ))}
         </tbody>

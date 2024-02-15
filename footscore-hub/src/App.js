@@ -7,6 +7,7 @@ import News from './News';
 import Advert from './Advert';
 import Footer from "./Footer";
 import Teams from "./teams";
+import Marquee from "./marquee";
 
 const leaguesData = [
   { id: 1, name: 'Premier League' },
@@ -19,10 +20,30 @@ const leaguesData = [
 const Header = ({ onMenuItemClick, onLeagueChange }) => {
   const [selectedLeague, setSelectedLeague] = useState('');
 
+  useEffect(() => {
+    animateWebsiteName();
+  }, []); // Run the animation on initial render
+
+  const handleMenuItemClick = (item) => {
+    onMenuItemClick(item);
+    animateWebsiteName(); // Trigger the animation on menu item click
+  };
+
   const handleLeagueChange = (e) => {
     const leagueId = e.target.value;
     setSelectedLeague(leagueId);
     onLeagueChange(leagueId); // Pass the selected league ID to the parent component
+    animateWebsiteName(); // Trigger the animation on league change
+  };
+
+  const animateWebsiteName = () => {
+    const websiteName = document.querySelector('.website-name');
+    if (websiteName) {
+      websiteName.classList.remove('emerge');
+      setTimeout(() => {
+        websiteName.classList.add('emerge');
+      }, 100); // Add a delay before adding the animation class to ensure re-rendering
+    }
   };
 
   return (
@@ -35,6 +56,8 @@ const Header = ({ onMenuItemClick, onLeagueChange }) => {
             <div className="updates">
               <span>Upcoming Website</span>
             </div>
+            {/* Marquee component within the blank div */}
+            <Marquee />
           </div>
         </div>
       </div>
@@ -57,12 +80,12 @@ const Header = ({ onMenuItemClick, onLeagueChange }) => {
       </div>
 
       <nav className="menu">
-        <Link to="/" className="menu-item" onClick={() => onMenuItemClick('Home')} style={{ backgroundColor: '#87421f' }}>Home</Link>
-        <Link to="/matches" className="menu-item" onClick={() => onMenuItemClick('Matches')} style={{ backgroundColor: 'goldenrod' }}>Matches</Link>
-        <Link to="/fixtures" className="menu-item" onClick={() => onMenuItemClick('Fixtures')} style={{ backgroundColor: 'pink' }}>Fixtures</Link>
-        <Link to="/table" className="menu-item" onClick={() => onMenuItemClick('Table')} style={{ backgroundColor: '#8B4513' }}>Table</Link>
-        <Link to="/news" className="menu-item" onClick={() => onMenuItemClick('News')} style={{ backgroundColor: '#32CD32' }}>News</Link>
-        <Link to="/teams" className="menu-item" onClick={() => onMenuItemClick('Home')} style={{ backgroundColor: '#32CD32' }}>Teams</Link>
+        <Link to="/" className="menu-item" onClick={() => handleMenuItemClick('Home')}>Home</Link>
+        <Link to="/matches" className="menu-item" onClick={() => handleMenuItemClick('Matches')}>Matches</Link>
+        <Link to="/fixtures" className="menu-item" onClick={() => handleMenuItemClick('Fixtures')}>Fixtures</Link>
+        <Link to="/table" className="menu-item" onClick={() => handleMenuItemClick('Table')}>Table</Link>
+        <Link to="/news" className="menu-item" onClick={() => handleMenuItemClick('News')}>News</Link>
+        <Link to="/teams" className="menu-item" onClick={() => handleMenuItemClick('Home')}>Teams</Link>
       </nav>
     </header>
   );
@@ -92,15 +115,16 @@ const Layout = ({ children, onMenuItemClick, onLeagueChange }) => (
     </div>
     <div className="advert">
       <div>
-        <Advert/>
+        <Advert />
       </div>
     </div>
     <div className="body-container" style={{ backgroundColor: '#f0f0f0' }}>
       {children}
     </div>
-    <Footer/>
+    <Footer />
   </div>
 );
+
 
 function App() {
   const [selectedItem, setSelectedItem] = useState('');
