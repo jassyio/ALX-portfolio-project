@@ -1,2 +1,8 @@
-DROP unlimited;
+SHOW databases;
+
+
+
+
+
+
 

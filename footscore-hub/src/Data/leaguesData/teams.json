@@ -9,14 +9,15 @@
   { "id": 8, "name": "Everton", "logo": "path/to/everton_logo.png", "stadium": "Goodison Park", "manager": "Frank Lampard" },
   { "id": 9, "name": "West Ham United", "logo": "path/to/west_ham_logo.png", "stadium": "London Stadium", "manager": "David Moyes" },
   { "id": 10, "name": "Aston Villa", "logo": "path/to/aston_villa_logo.png", "stadium": "Villa Park", "manager": "Steven Gerrard" },
-  { "id": 11, "name": "Wolverhampton Wanderers", "logo": "path/to/wolves_logo.png", "stadium": "Molineux Stadium", "manager": "Bruno Lage" },
-  { "id": 12, "name": "Crystal Palace", "logo": "path/to/crystal_palace_logo.png", "stadium": "Selhurst Park", "manager": "Patrick Vieira" },
+  { "id": 11, "name": "Wolverhampton Wanderers", "logo": "path/to/wolves_logo.png", "stadium": "Molineux Stadium", "manager": "Gary O'Neil" },
+  { "id": 12, "name": "Crystal Palace", "logo": "path/to/crystal_palace_logo.png", "stadium": "Selhurst Park", "manager": "Roy Hodgson" },
   { "id": 13, "name": "Southampton", "logo": "path/to/southampton_logo.png", "stadium": "St Mary's Stadium", "manager": "Ralph Hasenhüttl" },
   { "id": 14, "name": "Newcastle United", "logo": "path/to/newcastle_logo.png", "stadium": "St James' Park", "manager": "Eddie Howe" },
-  { "id": 15, "name": "Brighton & Hove Albion", "logo": "path/to/brighton_logo.png", "stadium": "Amex Stadium", "manager": "Graham Potter" },
+  { "id": 15, "name": "Brighton & Hove Albion", "logo": "path/to/brighton_logo.png", "stadium": "Amex Stadium", "manager": "Roberto De Zerbi" },
   { "id": 16, "name": "Brentford", "logo": "../public/images/brentford_logo.png", "stadium": "Brentford Community Stadium", "manager": "Thomas Frank" },
   { "id": 17, "name": "Fulham", "logo": "path/to/fulham_logo.png", "stadium": "Craven Cottage", "manager": "Marco Silva" },
-  { "id": 18, "name": "West Bromwich Albion", "logo": "path/to/west_brom_logo.png", "stadium": "The Hawthorns", "manager": "Steve Bruce" },
-  { "id": 19, "name": "Sheffield United", "logo": "path/to/sheffield_logo.png", "stadium": "Bramall Lane", "manager": "Paul Heckingbottom" },
-  { "id": 20, "name": "Leeds United", "logo": "path/to/leeds_logo.png", "stadium": "Elland Road", "manager": "Jesse Marsch" }
+  { "id": 18, "name": "Sheffield United", "logo": "path/to/sheffield_logo.png", "stadium": "Bramall Lane", "manager": "Chris Wilder" },
+  { "id": 19, "name": "Luton Town", "manager": "Rob Edwards" },
+  { "id": 20, "name": "Nottingham Forest", "manager": "Nuno Espirito Santo" }
 ]
+         

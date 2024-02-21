@@ -10,15 +10,14 @@
 
 /* Styling for the website name */
 .website-name {
-  font-size: 3rem;
-  font-family: 'Lemon Jelly', cursive; /* Lemon Jelly font */
+  font-size: 3.5rem;
+  font-family: 'Blackletter', fantasy; /* Blackletter font */
   text-transform: uppercase;
   letter-spacing: 3px;
   color: #c2e71d; /* Light green color */
-  width: 30%; /* Cover 30% of the width */
   overflow: hidden; /* Hide overflow */
   white-space: nowrap; /* Prevent line breaks */
-  animation: emergeAnimation 1s forwards; /* Animation to emerge from the right side */
+  animation: emergeAnimation 2s forwards; /* Animation to emerge from the right side */
 }
 
 /* Animation for the website name */
@@ -61,7 +60,6 @@
   flex-direction: column;
   align-items: center;
   padding: 5px;
-  height: auto;
   text-align: center;
 }
 
@@ -73,16 +71,6 @@
   padding-top: 0.5%;
 }
 
-/* Styling for the main content */
-.main-content {
-  background-color: #bba2a2; /* Default background color */
-  padding: 10px;
-  transition: background-color 0.5s; /* Transition for background color change */
-  text-align: center;
-  justify-content: space-around;
-  align-items: center;
-}
-
 /* Styling for the footer */
 footer {
   background-color: #1f74ad;
@@ -92,55 +80,23 @@ footer {
   text-align: center;
   position: relative;
   bottom: 0;
-  width: 100%;
+  width: 100%; /* Set width to 100% */
   height: 3vh;
 }
 
+
 .blank {
-  height: 5vh; /* Set the height to 5% of the viewport height */
-  background-color: #4b0404; /* Cool background color */
+   /* Set the height to 5% of the viewport height */
+  background-color: #04464b; /* Cool background color */
   position: relative; /* Add relative positioning */
   overflow: hidden; /* Hide overflow */
-  padding-bottom: 3.5%;
+  padding-bottom: 0.5%;
 }
 
 .filter {
   height: 5vh; /* Set the height to 5% of the viewport height */
   background-color: #87ceeb; /* Cool background color */
   padding: 5px;
-}
-
-/* Animation for footballs and Scorehub */
-.football-left {
-  display: block;
-  width: 50px; /* Adjust size as needed */
-  height: 50px; /* Adjust size as needed */
-  background: url('../public/images/football.png') center/cover;
-  border-radius: 50%;
-  /* Animation to spin and move the football */
-  animation: spin 2000ms linear infinite, moveLeftToRight 30s linear infinite;
-  position: absolute;
-  left: -50px; /* Start position from the left side */
-}
-
-/* Spinning the football using key frames */
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Move football from left to right */
-@keyframes moveLeftToRight {
-  0% {
-    left: -50px;
-  } /* Start position from the left side */
-  100% {
-    left: calc(100% + 50px);
-  } /* End position beyond the right side */
 }
 
 .advert-container {
@@ -157,14 +113,25 @@ footer {
 
 /* Add this to the end of your CSS file */
 .animation-container {
-  position: relative;
+  width: 100%;
+  overflow: hidden;
 }
 
-.updates-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.marquee-container {
   white-space: nowrap;
-  overflow: hidden;
+  animation: marqueeAnimation 23s linear infinite; /* Adjust timing as needed */
+}
+
+.marquee-item {
+  display: inline-block;
+  padding-right: 20px; /* Adjust spacing */
+}
+
+@keyframes marqueeAnimation {
+  0% {
+    transform: translateX(-100%); /* Start position off-screen right */
+  }
+  100% {
+    transform: translateX(100%); /* End position off-screen left */
+  }
 }

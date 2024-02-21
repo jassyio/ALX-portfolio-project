@@ -2,7 +2,7 @@ body {
   background-color: #444; /* Darker background color */
   font-family: Arial, sans-serif; /* Classic font */
   color: #eee; /* Main text color */
-  position: absolute;
+  position: relative;
 }
 
 /* Headers */

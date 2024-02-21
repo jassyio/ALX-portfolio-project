@@ -1,29 +1,35 @@
-import React from 'react';
-import teamsData from './Data/leaguesData/teams.json';
-import './App.css'; // Import CSS file for styling
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const Teams = () => {
+const Teams = ({ selectedLeague }) => {
+  const [teams, setTeams] = useState([]);
+
+  useEffect(() => {
+    const fetchTeams = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/scorehub/teams/${selectedLeague}`);
+        setTeams(response.data);
+      } catch (error) {
+        console.error('Error fetching teams data:', error);
+      }
+    };
+
+    fetchTeams();
+  }, [selectedLeague]);
+
   return (
-    <div className="teams-container">
-      <h2 className="teams-heading">Premier League Teams</h2>
-      <table className="teams-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Stadium</th>
-            <th>Manager</th>
-          </tr>
-        </thead>
-        <tbody>
-          {teamsData.map((team) => (
-            <tr key={team.id}>
-              <td>{team.name}</td>
-              <td>{team.stadium}</td>
-              <td>{team.manager}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div>
+      <h2>Teams</h2>
+      <div className="teams-container">
+        {teams.map((team) => (
+          <div key={team.id} className="team-card">
+            <img src={team.logo} alt={team.name} />
+            <h3>{team.name}</h3>
+            <p>Stadium: {team.stadium}</p>
+            <p>Manager: {team.manager}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

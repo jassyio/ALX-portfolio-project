@@ -1,3 +1,1 @@
-SHOW databases;
-
-
+USE scorehub;
